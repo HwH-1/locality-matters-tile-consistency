@@ -1,3 +1,6 @@
+% All entries verified through the Crossref works API (api.crossref.org/works/<doi>)
+% on 2026-11-03; the two items without a Crossref record are labelled in their note
+% fields. Do not add an entry without a resolvable identifier.
 
 @incollection{kuwahara1976,
   author    = {Kuwahara, M. and Hachimura, K. and Eiho, S. and Kinoshita, M.},
@@ -177,7 +180,24 @@
 }
 
 
+% =========================================================================
+% Added for Section 6.9% ---------------------------------------------------------------------------
+% 1. cv2.bilateralFilter
+% ---------------------------------------------------------------------------
 
+% OPENCV: modules/imgproc/src/bilateral_filter.dispatch.cpp:442-468 (public entry
+%   bilateralFilter(), which dispatches to OpenCL / HAL / IPP and otherwise to
+%   bilateralFilter_8u at :160-238 or bilateralFilter_32f at :240-330); the SIMD inner
+%   loops are in modules/imgproc/src/bilateral_filter.simd.hpp:479-... (8u) and
+%   :769-... (32f). Header doc + declaration:
+%   modules/imgproc/include/opencv2/imgproc.hpp:1281-1308 (doc) and :1309-1311 (decl).
+% DECLARED BY OpenCV: no cite key at all. The header/function docstring links only the
+%   CVonline tutorial page "https://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/"
+%   "MANDUCHI1/Bilateral_Filtering.html" (i.e. a rewrite authored by Manduchi), and
+%   doc/opencv.bib contains no Manduchi and no bilateral record (`grep -c -i manduchi
+%   doc/opencv.bib` = 0; `grep -c -i bilateral` = 0; "Tomasi, Carlo" appears only in the
+%   unrelated Birchfield-Tomasi, Rubner et al. and Shi-Tomasi entries). The primary paper
+%   below is supplied by us, not declared by OpenCV.
 @inproceedings{tomasi1998bilateral,
   author    = {Tomasi, Carlo and Manduchi, Roberto},
   title     = {Bilateral Filtering for Gray and Color Images},
@@ -187,8 +207,32 @@
   publisher = {IEEE},
   doi       = {10.1109/ICCV.1998.710815}
 }
+% VERIFY: GET api.crossref.org/works/10.1109/iccv.1998.710815 -> title "Bilateral
+%   filtering for gray and color images"; container-title "Sixth International
+%   Conference on Computer Vision (IEEE Cat. No.98CH36271)"; page 839-846; authors
+%   "C. Tomasi", "R. Manduchi"; type proceedings-article. Two gaps in that record, both
+%   honest to report: Crossref returns NO date (issued/published date-parts = [[null]])
+%   and publisher = "Narosa Publishing House" (wrong for an IEEE proceedings), so the
+%   year 1998 comes from the DOI string and the venue, and the given names are the
+%   conventional full forms (Crossref gives initials only).
 
+% ---------------------------------------------------------------------------
+% 2. cv2.ximgproc.guidedFilter  (OpenCV keys Kaiming10 + Kaiming15)
+% ---------------------------------------------------------------------------
 
+% OPENCV: modules/ximgproc/src/guided_filter.cpp:843-847 (public entry guidedFilter(),
+%   = createGuidedFilter(...) + gf->filter()); the algorithm body is
+%   GuidedFilterImpl::filter at guided_filter.cpp:753-811, with the "Fast" downsampling
+%   branch selected by `scale` (init at :703-738). Header:
+%   modules/ximgproc/include/opencv2/ximgproc/edge_filter.hpp:186 (declaration), docs at
+%   :126-185, which declare "@cite Kaiming10 @cite Kaiming15" at :128 and :159.
+% DECLARED BY OpenCV: BOTH versions. ximgproc/doc/ximgproc.bib:48-55 = @incollection
+%   {Kaiming10} "Guided image filtering", booktitle "Computer Vision--ECCV 2010", pages
+%   1--14, 2010, Springer -> the CONFERENCE (ECCV 2010) paper, not the TPAMI one; and
+%   ximgproc.bib:57-62 = @article{Kaiming15} "Fast guided filter", journal "arXiv
+%   preprint arXiv:1505.00996", 2015 -> the arXiv note that motivates the `scale`
+%   parameter. The TPAMI journal version is NOT declared anywhere in OpenCV; it is given
+%   below as an optional alias so a reviewer can find the extended version.
 @incollection{he2010guided,
   author    = {He, Kaiming and Sun, Jian and Tang, Xiaoou},
   title     = {Guided Image Filtering},
@@ -199,6 +243,10 @@
   pages     = {1--14},
   doi       = {10.1007/978-3-642-15549-9_1}
 }
+% VERIFY: GET api.crossref.org/works/10.1007/978-3-642-15549-9_1 -> "Guided Image
+%   Filtering", container-title ["Lecture Notes in Computer Science", "Computer Vision -
+%   ECCV 2010"], type book-chapter, page 1-14, issued 2010, authors Kaiming He / Jian Sun
+%   / Xiaoou Tang. Matches OpenCV's declared Kaiming10 exactly (ECCV 2010, pp. 1-14).
 
 @article{he2013guidedtpami,
   author  = {He, Kaiming and Sun, Jian and Tang, Xiaoou},
@@ -210,6 +258,9 @@
   year    = {2013},
   doi     = {10.1109/TPAMI.2012.213}
 }
+% VERIFY: GET api.crossref.org/works/10.1109/tpami.2012.213 -> "Guided Image Filtering",
+%   IEEE TPAMI, volume 35, issue 6, pages 1397-1409, year 2013. NOT declared by OpenCV
+%   (journal extension of the ECCV paper; cite only if the manuscript mentions it).
 
 @misc{he2015fastguided,
   author = {He, Kaiming and Sun, Jian},
@@ -220,8 +271,34 @@
   primaryClass  = {cs.CV},
   url    = {https://arxiv.org/abs/1505.00996}
 }
+% VERIFY: GET https://export.arxiv.org/api/query?id_list=1505.00996 -> title "Fast
+%   Guided Filter", authors Kaiming He, Jian Sun, published 2015-05-05. This is what
+%   OpenCV's Kaiming15 key (ximgproc.bib:57-62) declares; it is the source of the
+%   subsample-factor `scale` used by cv2.ximgproc.guidedFilter. No Crossref record for
+%   it (arXiv preprint only) -- hence no doi field.
 
+% ---------------------------------------------------------------------------
+% 3. cv2.fastNlMeansDenoisingColored
+% ---------------------------------------------------------------------------
 
+% OPENCV: modules/photo/src/denoising.cpp:168-208 (public entry
+% fastNlMeansDenoisingColored(): BGR->CIELAB, then two calls to fastNlMeansDenoising,
+% then mix back); the single-image workhorse is cv::fastNlMeansDenoising at
+% denoising.cpp:104-111 / :113-166 -> fastNlMeansDenoising_ at :49-102, whose inner loop
+% is modules/photo/src/fast_nlmeans_denoising_invoker.hpp (OpenCL variant
+% fast_nlmeans_denoising_opencl.hpp:182-...). Header:
+% modules/photo/include/opencv2/photo.hpp:180-200 (doc + declaration).
+% DECLARED BY OpenCV: the CVPR-2005 paper is NOT what OpenCV cites. The
+% fastNlMeansDenoising doc comment (photo.hpp:128-129, repeated at :151-152) links the
+% IPOL article "http://www.ipol.im/pub/algo/bcm_non_local_means_denoising/", and the
+% only BibTeX key used in this family is @cite Buades2005DenoisingIS, which appears in
+% the *Multi* (video) variants' docs at photo.hpp:204 and :231 and resolves to
+% doc/opencv.bib:238-245 (duplicated verbatim at doc/opencv.bib:1574-1580) = the AVSS
+% 2005 paper "Denoising image sequences does not require motion estimation". There is NO
+% Lebrun thesis entry and NO CVPR 2005 entry in doc/opencv.bib (`grep -c -i lebrun` = 0,
+% `grep -c -i "non-local algorithm"` = 0; the 4 "buades" hits are the two copies of that
+% single AVSS record).
+% All three records are given so the manuscript can name what OpenCV declares.
 @inproceedings{buades2005nlm,
   author    = {Buades, Antoni and Coll, Bartomeu and Morel, Jean-Michel},
   title     = {A Non-Local Algorithm for Image Denoising},
@@ -232,6 +309,12 @@
   publisher = {IEEE},
   doi       = {10.1109/CVPR.2005.38}
 }
+% VERIFY: GET api.crossref.org/works?query.bibliographic="A non-local algorithm for
+%   image denoising Buades Coll Morel CVPR 2005" -> top hit DOI
+%   10.1109/cvpr.2005.38, container "2005 IEEE Computer Society Conference on Computer
+%   Vision and Pattern Recognition (CVPR'05)", volume 2, page 60-65, authors
+%   Buades A. / Coll B. / Morel J.-M. Crossref carries no date-parts for this record
+%   (year 2005 from the DOI string and the proceedings title).
 
 @inproceedings{buades2005avss,
   author    = {Buades, Antoni and Coll, Bartomeu and Morel, Jean-Michel},
@@ -242,6 +325,13 @@
   publisher = {IEEE},
   doi       = {10.1109/AVSS.2005.1577245}
 }
+% VERIFY: GET api.crossref.org/works/10.1109/avss.2005.1577245 -> "Denoising image
+%   sequences does not require motion estimation", page 70-74, authors Buades A. / Coll
+%   B. / Morel J. M., type proceedings-article. This is the paper OpenCV's
+%   @cite Buades2005DenoisingIS (doc/opencv.bib:238-245) declares -- note that its
+%   subject is image SEQUENCES, so it is not an adequate reference for the single-image
+%   function cv2.fastNlMeansDenoising/Colored; the manuscript should cite
+%   buades2005nlm for the algorithm and may footnote what OpenCV declares.
 
 @article{buades2011ipolnlm,
   author  = {Buades, Antoni and Coll, Bartomeu and Morel, Jean-Michel},
@@ -252,8 +342,41 @@
   year    = {2011},
   doi     = {10.5201/ipol.2011.bcm_nlm}
 }
+% VERIFY: GET api.crossref.org/works/10.5201/ipol.2011.bcm_nlm -> "Non-Local Means
+%   Denoising", Image Processing On Line, volume 1, page 208-212, 2011, authors Buades /
+%   Coll / Morel. This is the reference actually linked from the OpenCV doc comment of
+%   fastNlMeansDenoising (photo.hpp:128-129), so it is the defensible citation for what
+%   the shipped code implements.
 
+% ---------------------------------------------------------------------------
+% 4. cv2.ximgproc.anisotropicDiffusion
+% ---------------------------------------------------------------------------
 
+% OPENCV: modules/ximgproc/src/anisodiff.cpp:242-291 (public entry
+% anisotropicDiffusion(); the CPU iteration loop with temp0x/temp1x is :274-289) plus
+% the per-row kernel class ADBody at :84-200; OpenCL path ocl_anisotropicDiffusion at
+% :203-240 (its loop is :215-237). Header doc + declaration:
+% modules/ximgproc/include/opencv2/ximgproc.hpp:216-236.
+% DECLARED BY OpenCV: no cite key. The header states in prose "The function applies
+%   Perona-Malik anisotropic diffusion to an image" and prints div(c grad I) with the
+%   two conductivities c = exp(-(||grad I||/K)^2) "or" c = 1/(1+(||grad I||/K)^2)
+%   (ximgproc.hpp:218-229). Neither Perona nor Malik appears anywhere in
+%   opencv_contrib-5.0.0/modules/ximgproc/doc/ximgproc.bib or in
+%   opencv-5.0.0/doc/opencv.bib, so the primary reference below is supplied by us.
+% WHAT THE CODE ACTUALLY IS (verified in the source, not from the doc): scalar
+%   Perona-Malik only, and only equation (1). ADBody::operator() (anisodiff.cpp:95-194)
+%   loops over the 8 neighbours of a CV_8UC3 pixel (offset table tab[] at :100), forms
+%   nabla = |d0|+|d1|+|d2| (L1 gradient summed over channels, :183), looks up
+%   w = exptab[nabla] (:184; SIMD equivalent at :149-152) with exptab[k] =
+%   exp(-(k/sigma)^2), sigma = K*cn*255 (:257-263), and writes
+%   saturate_cast<uchar>(c + alpha*sum(w*delta)) (:189-191) -- i.e. an explicit
+%   forward-Euler step whose state is re-quantised to 8 bits every iteration. There is
+%   NO tensor: `grep -c -i "weickert|tensor|jmatrix|eigen" anisodiff.cpp` = 0, so this
+%   is NOT Weickert-style structure-tensor diffusion and must not be described as such. The second
+%   (rational) conductivity shown in the doc is not implemented -- confirmed
+%   independently by the module author's comment on opencv/opencv_contrib#1573
+%   (2019-11-07): "The diffusion method also does not support both equations for
+%   c(x, y, t) mentioned in Perona and Malik's paper."
 @article{perona1991diffusion,
   author  = {Perona, Pietro and Malik, Jitendra},
   title   = {Scale-Space and Edge Detection Using Anisotropic Diffusion},
@@ -264,8 +387,36 @@
   year    = {1990},
   doi     = {10.1109/34.56205}
 }
+% VERIFY: GET api.crossref.org/works/10.1109/34.56205 -> title "Scale-space and edge
+%   detection using anisotropic diffusion"; IEEE TPAMI; volume 12; issue 7; pages
+%   629-639; issued AND published-print = [1990, 7]; authors P. Perona / J. Malik.
+%   doi.org content negotiation returns the same: "Perona, P., & Malik, J. (1990).
+%   ... IEEE Transactions on Pattern Analysis and Machine Intelligence, 12(7), 629-639."
+% DISCREPANCY, reported rather than papered over: the task brief expected
+%   "TPAMI 13(7):679-699, 1991". No identifier we can reach supports that. The page
+%   range 629-639 is corroborated by an independent implementation (Peter Kovesi's
+%   anisodiff.m header cites "IEEE TPAMI 12(7):629-639, July 1990"), but the volume and
+%   year are inconsistent across sources: the registered DOI record says vol 12 / 1990,
+%   while the paper is commonly cited as vol 13 / 1991. The alternative DOI often seen,
+%   10.1109/26.86568, does NOT resolve: GET api.crossref.org/works/10.1109/26.86568 ->
+%   HTTP 404, and https://doi.org/10.1109/26.86568 -> "Error: DOI Not Found" (checked
+%   2026-11-03). IEEE Xplore itself was not reachable from this sandbox, so the volume
+%   cannot be settled from an identifier here; the entry above uses the fields the
+%   resolvable DOI actually returns.
 
+% ---------------------------------------------------------------------------
+% 5. cv2.ximgproc.amFilter  (OpenCV key Gastal12)
+% ---------------------------------------------------------------------------
 
+% OPENCV: modules/ximgproc/src/adaptive_manifold_filter_n.cpp:887-891 (public entry
+%   amFilter() = createAMFilter(...) + amf->filter()), core
+%   AdaptiveManifoldFilterN::filter at :359-382 (initBuffers :285-311,
+%   buildManifoldsAndPerformFiltering :421-493, gatherResult :384-420). Header:
+%   modules/ximgproc/include/opencv2/ximgproc/edge_filter.hpp:290 (declaration), docs
+%   :191-289, declaring "@cite Gastal12" at :193 and :262.
+% DECLARED BY OpenCV: ximgproc/doc/ximgproc.bib:37-46, @article{Gastal12}, title
+%   "Adaptive manifolds for real-time high-dimensional filtering", ACM TOG 31(4), 2012
+%   -- but with pages={33}, which is wrong (see VERIFY).
 @article{gastal2012amf,
   author  = {Gastal, Eduardo S. L. and Oliveira, Manuel M.},
   title   = {Adaptive Manifolds for Real-Time High-Dimensional Filtering},
@@ -277,8 +428,24 @@
   month   = jul,
   doi     = {10.1145/2185520.2185529}
 }
+% VERIFY: GET api.crossref.org/works/10.1145/2185520.2185529 -> "Adaptive manifolds for
+%   real-time high-dimensional filtering", ACM Transactions on Graphics, volume 31,
+%   issue 4, pages 1-13, issued [2012,7], authors Eduardo S. L. Gastal / Manuel M.
+%   Oliveira. doi.org/APA returns the same string. OpenCV's bib field pages={33} is a
+%   Google-Scholar artefact and is contradicted by the DOI record; the SIGGRAPH Asia
+%   2012 venue is the one in the DOI prefix 2185520* (conference proceedings).
 
+% ---------------------------------------------------------------------------
+% 6. cv2.ximgproc.rollingGuidanceFilter  (OpenCV key zhang2014rolling)
+% ---------------------------------------------------------------------------
 
+% OPENCV: modules/ximgproc/src/rolling_guidance_filter.cpp:44-82 (public entry; it is a
+%   loop of numOfIter jointBilateralFilter() calls over a progressively
+%   bilateral-filtered guidance image, :70-75). Header:
+%   modules/ximgproc/include/opencv2/ximgproc/edge_filter.hpp:350-382 (doc declares
+%   "@cite zhang2014rolling" at :352, declaration follows).
+% DECLARED BY OpenCV: ximgproc/doc/ximgproc.bib:212-219, @incollection{zhang2014rolling},
+%   "Rolling guidance filter", Computer Vision--ECCV 2014, pages 815--830, 2014, Springer.
 @incollection{zhang2014rollingguidance,
   author    = {Zhang, Qi and Shen, Xiaoyong and Xu, Li and Jia, Jiaya},
   title     = {Rolling Guidance Filter},
@@ -289,8 +456,25 @@
   pages     = {815--830},
   doi       = {10.1007/978-3-319-10578-9_53}
 }
+% VERIFY: GET api.crossref.org/works?query.bibliographic="Rolling guidance filter Zhang
+%   Shen Xu Jia European Conference Computer Vision 2014" -> top hit DOI
+%   10.1007/978-3-319-10578-9_53, "Rolling Guidance Filter", container-title ["Lecture
+%   Notes in Computer Science"], page 815-830, year 2014, authors Qi Zhang / Xiaoyong
+%   Shen / Li Xu / Jiaya Jia; doi.org/APA: "Zhang, Q., Shen, X., Xu, L., & Jia, J.
+%   (2014). Rolling Guidance Filter. Computer Vision - ECCV 2014, 815-830." Matches
+%   OpenCV's declared record in authors, venue and pages.
 
+% ---------------------------------------------------------------------------
+% 7. cv2.ximgproc.l0Smooth  (OpenCV key xu2011image)
+% ---------------------------------------------------------------------------
 
+% OPENCV: modules/ximgproc/src/l0_smooth.cpp:248-384 (public entry l0Smooth(); the
+%   gradient-data-term / pre-conditioned conjugate-gradient solver is in the same file,
+%   helpers above :248). Header:
+%   modules/ximgproc/include/opencv2/ximgproc/edge_filter.hpp:529 (declaration), doc
+%   :517-528 declaring "@cite xu2011image" at :527.
+% DECLARED BY OpenCV: ximgproc/doc/ximgproc.bib:138-147, @inproceedings{xu2011image},
+%   "Image smoothing via L 0 gradient minimization", ACM TOG 30(6), pages={174}, 2011.
 @article{xu2011l0smooth,
   author  = {Xu, Li and Lu, Cewu and Xu, Yi and Jia, Jiaya},
   title   = {Image Smoothing via {L}$_0$ Gradient Minimization},
@@ -301,7 +485,21 @@
   year    = {2011},
   doi     = {10.1145/2070781.2024208}
 }
+% VERIFY: GET api.crossref.org/works?query.bibliographic="Image smoothing via L0
+%   gradient minimization Xu Lu Xu Jia" -> top hit DOI 10.1145/2070781.2024208, "Image
+%   smoothing via <i>L</i><sub>0</sub> gradient minimization", ACM Transactions on
+%   Graphics, volume 30, issue 6, pages 1-12, year 2011, authors Li Xu / Cewu Lu / Yi Xu
+%   / Jiaya Jia. The parallel proceedings record is DOI 10.1145/2024156.2024208 ("Proc.
+%   of the 2011 SIGGRAPH Asia Conference", 1-12, 2011) -- same authors, same year.
+%   Unverified by identifier: OpenCV's pages={174}; Crossref returns no article-number
+%   field for either DOI, so the "Article 174" convention of the ACM Digital Library
+%   could not be confirmed from here and is therefore not asserted in the entry.
 
+% --- Recency pass, 2026-11-04: eight 2022-2026 records in the paper's three lanes.
+% Every field below was read from api.crossref.org/works/<doi> by the same call that
+% verified the DOI (see paper/REF_RECENT_CANDIDATES.md for the per-entry evidence level
+% and the verification log). Entries whose Crossref record carries no abstract are cited
+% on title-and-venue evidence only, and that is stated in their note field.
 
 @article{chen2022urst,
   author  = {Chen, Zhe and Wang, Wenhai and Xie, Enze and Lu, Tong and Luo, Ping},
@@ -327,7 +525,7 @@
 }
 
 @article{cira2024tile,
-  author  = {Cira, Calimanut-Ionut and Manso-Callejo, Miguel-{\'A}ngel and Yokoya, Naoto and S{\u a}l{\u a}gean, Tudor and Badea, Ana-Cornelia},
+  author  = {Cira, Calimanut-Ionut and Manso-Callejo, Miguel-Ángel and Yokoya, Naoto and Sălăgean, Tudor and Badea, Ana-Cornelia},
   title   = {Impact of Tile Size and Tile Overlap on the Prediction Performance of Convolutional Neural Networks Trained for Road Classification},
   journal = {Remote Sensing},
   year    = {2024},
@@ -351,7 +549,7 @@
 }
 
 @article{blusseau2022coirc,
-  author  = {Blusseau, Samy and Velasco-Forero, Santiago and Angulo, Jes{\'u}s and Bloch, Isabelle},
+  author  = {Blusseau, Samy and Velasco-Forero, Santiago and Angulo, Jesús and Bloch, Isabelle},
   title   = {Adaptive Anisotropic Morphological Filtering Based on Co-Circularity of Local Orientations},
   journal = {Image Processing On Line},
   year    = {2022},
@@ -448,4 +646,26 @@
   volume  = {126},
   pages   = {126009},
   doi     = {10.6028/jres.126.009}
+}
+
+@article{huang2025creativesynth,
+  author  = {Huang, Nisha and Dong, Weiming and Zhang, Yuxin and Tang, Fan and Li, Ronghui and Ma, Chongyang},
+  title   = {CreativeSynth: Cross-Art-Attention for Artistic Image Synthesis With Multimodal Diffusion},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume  = {31},
+  number  = {10},
+  pages   = {8425--8438},
+  year    = {2025},
+  doi     = {10.1109/TVCG.2025.3570771}
+}
+
+@article{tang2025attentionpainter,
+  author  = {Tang, Yizhe and Wang, Yue and Hu, Teng and Yi, Ran and Tan, Xin and Ma, Lizhuang and Lai, Yu-Kun and Rosin, Paul L.},
+  title   = {AttentionPainter: An Efficient and Adaptive Stroke Predictor for Scene Painting},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  volume  = {31},
+  number  = {12},
+  pages   = {10897--10911},
+  year    = {2025},
+  doi     = {10.1109/TVCG.2025.3618184}
 }
