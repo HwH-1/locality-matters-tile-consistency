@@ -32,7 +32,9 @@ for rel in ["manuscript/tvcg.md", "manuscript/full.md",
 
 lines = []
 for p in sorted(ROOT.rglob("*")):
-    if not p.is_file() or ".git" in p.parts or p.name == "MANIFEST.sha256":
+    if not p.is_file() or p.name == "MANIFEST.sha256":
+        continue
+    if ".git" in p.parts or "__pycache__" in p.parts or p.suffix in {".pyc", ".pyo"}:
         continue
     h = hashlib.sha256(p.read_bytes()).hexdigest()
     lines.append(h + "  " + p.relative_to(ROOT).as_posix())
