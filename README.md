@@ -7,8 +7,8 @@ of content-adaptive filters, supplies a measurement protocol (TCE), introduces
 LRS-AKF, and shows that published quality numbers are not portable across
 evaluation harnesses.
 
-**Repository URL:** __REPO_URL__
-**Archival DOI:** __REPO_DOI__
+**Repository URL:** https://github.com/HwH-1/locality-matters-tile-consistency
+**Archival DOI:** pending
 **Release date:** 2026-11-04  |  **Licence:** MIT (code), per-source terms (images)
 
 > After pushing, run `python set_repo_url.py https://github.com/<user>/<repo> [DOI]`

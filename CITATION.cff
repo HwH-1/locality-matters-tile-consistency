@@ -8,8 +8,8 @@ authors:
     orcid: "https://orcid.org/0009-0005-5898-0448"
     affiliation: "Handan College, Handan, Hebei, China"
 date-released: 2026-11-04
-url: "__REPO_URL__"
-doi: "__REPO_DOI__"
+url: "https://github.com/HwH-1/locality-matters-tile-consistency"
+doi: "pending"
 license: MIT
 keywords:
   - image abstraction
