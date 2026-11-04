@@ -69,7 +69,7 @@ for f in sorted(ROOT.rglob("*")):
     if ".git" in f.parts or "__pycache__" in f.parts or f.suffix in {".pyc", ".pyo"}:
         continue
     lines.append(hashlib.sha256(f.read_bytes()).hexdigest() + "  " + f.relative_to(ROOT).as_posix())
-(ROOT / "MANIFEST.sha256").write_text("\n".join(lines) + "\n", encoding="utf-8")
+(ROOT / "MANIFEST.sha256").write_bytes(("\n".join(lines) + "\n").encode("utf-8"))
 print("MANIFEST.sha256 refreshed:", len(lines), "files")
 print("Public URL:", url, "| DOI:", doi or "pending")
 print("Rebuild manuscript/tvcg.pdf and manuscript/full.pdf from the updated .md files.")
