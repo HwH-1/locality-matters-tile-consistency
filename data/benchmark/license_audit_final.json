@@ -1,0 +1,154 @@
+{
+ "dangling_rows": [],
+ "department_counts": {
+  "Costume Institute": 40,
+  "European Paintings": 145,
+  "Islamic Art": 25,
+  "Photographs": 44
+ },
+ "dimension_mismatch_vs_manifest": [],
+ "duplicate_hashes": [],
+ "evidence_failures": [],
+ "failures": [
+  "native record met_0436104.jpg: provenance.json sha1 7df06fe25e1b is the hash of images_orig/met_0436104.jpg, NOT of either file it names (full=images_native/met_0436104_full.png, crop=images_native/met_0436104_crop2048.png); the 4 files in images_native/ have no recorded checksum",
+  "native record met_0436140.jpg: provenance.json sha1 21fdcef722cb is the hash of images_orig/met_0436140.jpg, NOT of either file it names (full=images_native/met_0436140_full.png, crop=images_native/met_0436140_crop2048.png); the 4 files in images_native/ have no recorded checksum"
+ ],
+ "files": 254,
+ "generated_utc": "2026-11-03T18:45:27Z",
+ "hash_mismatch_list": [],
+ "hash_ok_count": 254,
+ "license_counts": {
+  "CC0": 254
+ },
+ "manifests_present": [
+  "manifest_met.csv"
+ ],
+ "native_over_1024": [
+  {
+   "file": "images_native/met_0436104_crop2048.png",
+   "longest": 2048
+  },
+  {
+   "file": "images_native/met_0436104_full.png",
+   "longest": 4000
+  },
+  {
+   "file": "images_native/met_0436140_crop2048.png",
+   "longest": 2048
+  },
+  {
+   "file": "images_native/met_0436140_full.png",
+   "longest": 4000
+  }
+ ],
+ "native_records": [
+  {
+   "crop": "images_native/met_0436104_crop2048.png",
+   "crop_png_bytes": 7846707,
+   "crop_png_dims": [
+    2048,
+    2048
+   ],
+   "crop_png_sha1": "b42faea8801dc052a9e15efd96c508f1822ea39d",
+   "declared_mb": 27.4,
+   "declared_mb_matches_full_png": true,
+   "declared_shape": [
+    3853,
+    4000,
+    3
+   ],
+   "declared_shape_matches_manifest_orig": true,
+   "full": "images_native/met_0436104_full.png",
+   "full_png_bytes": 27424563,
+   "full_png_dims": [
+    4000,
+    3853
+   ],
+   "full_png_sha1": "90c06dd3b0e29fb737e70b4ee874acfd118c7838",
+   "orig_jpeg_bytes": 6058126,
+   "orig_jpeg_sha1": "7df06fe25e1b239d8c3d20e6c8a7376ca64c1b53",
+   "provenance_sha1": "7df06fe25e1b239d8c3d20e6c8a7376ca64c1b53",
+   "served_row": {
+    "actual_sha1": "c0cb05c8f96d1e2b13d06d318764939cdaf0991c",
+    "evidence_ok": true,
+    "file": "images/met/met_0436104.jpg",
+    "license": "CC0",
+    "orig_wh": [
+     "4000",
+     "3853"
+    ],
+    "sha1": "c0cb05c8f96d1e2b13d06d318764939cdaf0991c",
+    "sha1_matches_native": false
+   },
+   "sha1_is_of_the_file_named_in_crop_field": false,
+   "sha1_is_of_the_file_named_in_full_field": false,
+   "sha1_matches": [
+    "orig_jpeg"
+   ],
+   "src": "met_0436104.jpg"
+  },
+  {
+   "crop": "images_native/met_0436140_crop2048.png",
+   "crop_png_bytes": 8784176,
+   "crop_png_dims": [
+    2048,
+    2048
+   ],
+   "crop_png_sha1": "b5de7e556fe9351340a3ebc62b6b6f52cc8b3429",
+   "declared_mb": 28.9,
+   "declared_mb_matches_full_png": true,
+   "declared_shape": [
+    4000,
+    3630,
+    3
+   ],
+   "declared_shape_matches_manifest_orig": true,
+   "full": "images_native/met_0436140_full.png",
+   "full_png_bytes": 28915997,
+   "full_png_dims": [
+    3630,
+    4000
+   ],
+   "full_png_sha1": "b06c15f137944519acf1f301485744ee60a4c90a",
+   "orig_jpeg_bytes": 7434057,
+   "orig_jpeg_sha1": "21fdcef722cb7e66e14d01aefec3460b7024d711",
+   "provenance_sha1": "21fdcef722cb7e66e14d01aefec3460b7024d711",
+   "served_row": {
+    "actual_sha1": "4386e7560b54c585faf5f191f0e9f7ea26fe83fd",
+    "evidence_ok": true,
+    "file": "images/met/met_0436140.jpg",
+    "license": "CC0",
+    "orig_wh": [
+     "3630",
+     "4000"
+    ],
+    "sha1": "4386e7560b54c585faf5f191f0e9f7ea26fe83fd",
+    "sha1_matches_native": false
+   },
+   "sha1_is_of_the_file_named_in_crop_field": false,
+   "sha1_is_of_the_file_named_in_full_field": false,
+   "sha1_matches": [
+    "orig_jpeg"
+   ],
+   "src": "met_0436140.jpg"
+  }
+ ],
+ "orphan_files": [],
+ "pass": false,
+ "pass_pool_286": true,
+ "per_source_file_counts": {
+  "images_ext": 0,
+  "images_orig": 2,
+  "met": 254,
+  "nasa": 0,
+  "native": 4,
+  "skimage": 10,
+  "synthetic": 22
+ },
+ "rows": 254,
+ "scope_note": "size_violations covers images/met (254) + images/skimage (10) + images/synthetic (22) = the 286 released pool; images_native/ (4 derived files, up to 4000 px) is audited separately under native_over_1024 and is NOT part of the 286.",
+ "size_rule": "768 <= max(width,height) <= 1024 for every served file",
+ "size_violations": [],
+ "total_images": 286,
+ "unique_sha1_count": 292
+}

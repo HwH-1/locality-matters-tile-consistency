@@ -1,0 +1,50 @@
+[
+ {
+  "src": "images_orig/met_0436104.jpg",
+  "src_sha1": "7df06fe25e1b239d8c3d20e6c8a7376ca64c1b53",
+  "full": "images_native/met_0436104_full.png",
+  "full_sha1": "3e7e460c5f529bef5f52dfaf5004ba20fc91cd1d",
+  "crop": "images_native/met_0436104_crop2048.png",
+  "crop_sha1": "42de5c46a3c0c8291045608f350d311f7b0dfd37",
+  "crop_offset_yx": [
+   902,
+   976
+  ],
+  "crop_size": [
+   2048,
+   2048
+  ],
+  "decoded_shape": [
+   3853,
+   4000,
+   3
+  ],
+  "mb": 28.6,
+  "derivation": "cv2.imread(orig JPEG, IMREAD_COLOR) -> lossless PNG; crop = centred 2048x2048 window of those exact pixels",
+  "licence": "Metropolitan Museum of Art Open Access, CC0"
+ },
+ {
+  "src": "images_orig/met_0436140.jpg",
+  "src_sha1": "21fdcef722cb7e66e14d01aefec3460b7024d711",
+  "full": "images_native/met_0436140_full.png",
+  "full_sha1": "a7f9c14a24f4718e8a33537e7bf53eee7e0dd01f",
+  "crop": "images_native/met_0436140_crop2048.png",
+  "crop_sha1": "75382a0d55f15c4905088ffda8e6238149512226",
+  "crop_offset_yx": [
+   976,
+   791
+  ],
+  "crop_size": [
+   2048,
+   2048
+  ],
+  "decoded_shape": [
+   4000,
+   3630,
+   3
+  ],
+  "mb": 32.9,
+  "derivation": "cv2.imread(orig JPEG, IMREAD_COLOR) -> lossless PNG; crop = centred 2048x2048 window of those exact pixels",
+  "licence": "Metropolitan Museum of Art Open Access, CC0"
+ }
+]

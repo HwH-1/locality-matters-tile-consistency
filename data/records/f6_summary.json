@@ -1,0 +1,44 @@
+{
+ "canvas": "canvas_2048.png",
+ "n": 4,
+ "halo": 48,
+ "crop": [
+  204,
+  204,
+  512
+ ],
+ "methods": {
+  "CA-AKF": {
+   "tce": {
+    "rmse": 0.0028564,
+    "maxd": 0.0991741,
+    "meand": 0.0007014,
+    "frac1": 0.0507505,
+    "frac4": 0.0070243
+   },
+   "gv": 0.002,
+   "ratio": 0.67,
+   "crop_dev_levels": {
+    "max": 25.289,
+    "frac1": 0.11209
+   },
+   "frac1_full": 0.05075
+  },
+  "LRS-final": {
+   "tce": {
+    "rmse": 0.0,
+    "maxd": 4.67e-05,
+    "meand": 0.0,
+    "frac1": 0.0,
+    "frac4": 0.0
+   },
+   "gv": 0.0,
+   "ratio": 0.0,
+   "crop_dev_levels": {
+    "max": 0.0,
+    "frac1": 0.0
+   },
+   "frac1_full": 0.0
+  }
+ }
+}

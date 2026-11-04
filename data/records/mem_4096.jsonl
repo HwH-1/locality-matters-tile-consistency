@@ -1,0 +1,1 @@
+{"canvas": "canvas_4096.png", "shape": [4096, 4096, 3], "array_mb": 201.3, "load_s": 0.91, "method": "CA-AKF", "mode": "tiled", "n": 8, "halo": 48, "ok": true, "filter_s": 833.01, "out_rms": 0.476689, "peak_mb": 995.0}

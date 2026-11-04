@@ -1,0 +1,10 @@
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.14, "method": "AKF", "mode": "whole", "n": 4, "halo": 48, "ok": true, "filter_s": 33.85, "out_rms": 0.375564, "peak_mb": 2174.4}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.13, "method": "AKF", "mode": "tiled", "n": 4, "halo": 48, "ok": true, "filter_s": 46.01, "out_rms": 0.375564, "peak_mb": 422.3}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.13, "method": "LRS-final", "mode": "tiled", "n": 4, "halo": 48, "ok": true, "filter_s": 344.22, "out_rms": 0.378027, "peak_mb": 628.9}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.13, "method": "AKF", "mode": "tiled", "n": 8, "halo": 48, "ok": true, "filter_s": 73.61, "out_rms": 0.375564, "peak_mb": 376.9}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.21, "method": "CA-AKF", "mode": "whole", "n": 4, "halo": 48, "ok": true, "filter_s": 143.88, "out_rms": 0.376189, "peak_mb": 2175.7}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.21, "method": "CA-AKF", "mode": "tiled", "n": 4, "halo": 48, "ok": true, "filter_s": 205.93, "out_rms": 0.376259, "peak_mb": 447.3}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.23, "method": "CA-AKF", "mode": "tiled", "n": 8, "halo": 48, "ok": true, "filter_s": 320.74, "out_rms": 0.376325, "peak_mb": 360.6}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.23, "method": "SC-AKF", "mode": "whole", "n": 4, "halo": 48, "ok": true, "filter_s": 356.57, "out_rms": 0.378575, "peak_mb": 3846.6}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.23, "method": "SC-AKF", "mode": "tiled", "n": 4, "halo": 48, "ok": true, "filter_s": 516.45, "out_rms": 0.37788, "peak_mb": 576.5}
+{"canvas": "canvas_2048.png", "shape": [2048, 2048, 3], "array_mb": 50.3, "load_s": 0.13, "method": "SC-AKF", "mode": "tiled", "n": 8, "halo": 48, "ok": true, "filter_s": 746.58, "out_rms": 0.377409, "peak_mb": 434.4}

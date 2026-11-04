@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the accompanying paper."
+type: software
+title: "Locality Matters: artefacts for tile-consistent content-adaptive anisotropic Kuwahara filtering"
+authors:
+  - family-names: Wang
+    given-names: YingJie
+    orcid: "https://orcid.org/0009-0005-5898-0448"
+    affiliation: "Handan College, Handan, Hebei, China"
+date-released: 2026-11-04
+url: "__REPO_URL__"
+doi: "__REPO_DOI__"
+license: MIT
+keywords:
+  - image abstraction
+  - anisotropic Kuwahara filter
+  - tile consistency
+  - reproducibility
