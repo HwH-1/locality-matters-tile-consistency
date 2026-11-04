@@ -1,5 +1,12 @@
 # Third-party code and data
 
+The repository's own code is MIT-licensed (see the root `LICENSE`). Third-party
+code under `code/reference/` carries its own MIT licence (see
+`code/reference/LICENSE`). **Images in `data/images/` are not covered by the
+code licences**; their per-source terms are listed below. This file records the
+exceptions; keeping it out of `LICENSE` lets GitHub recognise the root file as
+a standard MIT licence.
+
 ## Code: JLR-CAKF reference operator (code/reference/)
 
 The anisotropic-Kuwahara operator implementation in `code/reference/src/`
